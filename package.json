@@ -1,0 +1,19 @@
+{
+  "name": "feedback",
+  "version": "1.0.0",
+  "description": "web application that allows employees to submit feedback toward each other's performance review.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woohoeon/FullStackEngineerChallenge.git"
+  },
+  "author": "Hoeon Woo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woohoeon/FullStackEngineerChallenge/issues"
+  },
+  "homepage": "https://github.com/woohoeon/FullStackEngineerChallenge#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
