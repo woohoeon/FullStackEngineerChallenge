@@ -1,0 +1,3 @@
+import EditPerformanceReviewContainer from './EditPerformanceReviewContainer'
+
+export default EditPerformanceReviewContainer

@@ -1,0 +1,3 @@
+import PerformanceReviewDetailContainer from './PerformanceReviewDetailContainer'
+
+export default PerformanceReviewDetailContainer
