@@ -1,3 +1,0 @@
-import WritePerformanceReviewContainer from './WritePerformanceReviewContainer'
-
-export default WritePerformanceReviewContainer

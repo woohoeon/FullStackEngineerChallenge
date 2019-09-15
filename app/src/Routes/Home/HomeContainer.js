@@ -1,5 +1,6 @@
 import React from 'react'
+import HomePresenter from './HomePresenter'
 
-const HomeContainer = () => 'HomeContainer'
+const HomeContainer = () => <HomePresenter />
 
 export default HomeContainer

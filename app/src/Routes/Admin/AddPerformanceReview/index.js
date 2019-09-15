@@ -1,3 +1,0 @@
-import AddPerformanceReviewContainer from './AddPerformanceReviewContainer'
-
-export default AddPerformanceReviewContainer

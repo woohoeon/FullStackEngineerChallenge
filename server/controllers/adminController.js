@@ -1,31 +1,171 @@
-export const adminLogin = (req, res) => res.send('adminLogin')
+import User from '../models/User'
+import PerformanceReview from '../models/PerformanceReview'
+
+const ROLE_ADMIN = 0
+const ROLE_EMPLOYEE = 1
+
+export const adminLogin = async (req, res) => {
+	try {
+		const { id, password } = req.body.params
+		const admin = await User.findOne({ id, role: 0 })
+		if (admin && admin.password === password) {
+			res.send({ result: true })
+		} else {
+			res.send({ result: false })
+		}
+	} catch (err) {
+		console.error(err)
+		res.send({ result: false })
+	}
+}
 
 export const adminLogout = (req, res) => res.send('adminLogout')
 
-export const admins = (req, res) => res.send('admins')
+export const admins = async (req, res) => {
+	try {
+		const admins = await User.find({ role: ROLE_ADMIN })
+		res.send({ admins })
+	} catch (err) {
+		console.error(err)
+		res.send({ admins: [] })
+	}
+}
 
-export const adminDetail = (req, res) => res.send('adminDetail')
+export const addAdmin = async (req, res) => {
+	try {
+		const { id, name, password, jobTitle } = req.body.params
+		const newAdmin = await User.create({
+			id,
+			name,
+			password,
+			role: ROLE_ADMIN,
+			jobTitle
+		})
+		res.send({ adminDetail: newAdmin })
+	} catch (err) {
+		console.error(err)
+		res.send({ adminDetail: {} })
+	}
+}
 
-export const addAdmin = (req, res) => res.send('addAdmin')
+export const editAdmin = async (req, res) => {
+	try {
+		const { id, name, password, jobTitle } = req.body.params
+		await User.updateOne(
+			{ id },
+			{
+				name,
+				password,
+				role: ROLE_ADMIN,
+				jobTitle
+			}
+		)
+		res.send({})
+	} catch (err) {
+		console.error(err)
+		res.send({})
+	}
+}
 
-export const editAdmin = (req, res) => res.send('editAdmin')
+export const deleteAdmin = async (req, res) => {
+	try {
+		const { id } = req.body.params
+		await User.deleteOne({ id })
+		res.send({})
+	} catch (err) {
+		console.error(err)
+		res.send({})
+	}
+}
 
-export const deleteAdmin = (req, res) => res.send('deleteAdmin')
+export const employees = async (req, res) => {
+	try {
+		const employees = await User.find({ role: ROLE_EMPLOYEE })
+		res.send({ employees })
+	} catch (err) {
+		console.error(err)
+		res.send({ employees: [] })
+	}
+}
 
-export const employees = (req, res) => res.send('employees')
+export const addEmployee = async (req, res) => {
+	try {
+		const { id, name, password, jobTitle } = req.body.params
+		const newEmployee = await User.create({
+			id,
+			name,
+			password,
+			role: ROLE_EMPLOYEE,
+			jobTitle
+		})
+		res.send({ employeeDetail: newEmployee })
+	} catch (err) {
+		console.error(err)
+		res.send({ employeeDetail: {} })
+	}
+}
 
-export const employeeDetail = (req, res) => res.send('employeeDetail')
+export const editEmployee = async (req, res) => {
+	try {
+		const { id, name, password, jobTitle } = req.body.params
+		await User.updateOne(
+			{ id },
+			{
+				name,
+				password,
+				role: ROLE_EMPLOYEE,
+				jobTitle
+			}
+		)
+		res.send({})
+	} catch (err) {
+		console.error(err)
+		res.send({})
+	}
+}
 
-export const addEmployee = (req, res) => res.send('addEmployee')
+export const deleteEmployee = async (req, res) => {
+	try {
+		const { id } = req.body.params
+		await User.deleteOne({ id })
+		res.send({})
+	} catch (err) {
+		console.error(err)
+		res.send({})
+	}
+}
 
-export const editEmployee = (req, res) => res.send('editEmployee')
+export const performanceReviews = async (req, res) => {
+	try {
+		const performanceReviews = await PerformanceReview.find({})
+		res.send({ performanceReviews })
+	} catch (err) {
+		console.error(err)
+		res.send({ performanceReviews: [] })
+	}
+}
 
-export const deleteEmployee = (req, res) => res.send('deleteEmployee')
+export const addPerformanceReview = async (req, res) => {
+	try {
+		const { title, employeeId, reviewers, reviewOpen } = req.body.params
+		const arr = reviewers.map((reviewerId) => ({ title, employeeId, reviewerId, reviewOpen }))
+		const added = await PerformanceReview.create(arr)
+		res.send({ performanceReviews: added })
+	} catch (err) {
+		console.error(err)
+		res.send({ addedPerformanceReviews: [] })
+	}
+}
 
-export const performanceReviews = (req, res) => res.send('performanceReviews')
-
-export const performanceReviewDetail = (req, res) => res.send('performanceReviewDetail')
-
-export const addPerformanceReview = (req, res) => res.send('addPerformanceReview')
-
-export const editPerformanceReview = (req, res) => res.send('editPerformanceReview')
+export const editPerformanceReview = async (req, res) => {
+	try {
+		const { originTitle, originEmployeeId, title, employeeId, reviewers, reviewOpen } = req.body.params
+		await PerformanceReview.deleteMany({ title: originTitle, employeeId: originEmployeeId })
+		const arr = reviewers.map((reviewerId) => ({ title, employeeId, reviewerId, reviewOpen }))
+		const added = await PerformanceReview.create(arr)
+		res.send({ performanceReviews: added })
+	} catch (err) {
+		console.error(err)
+		res.send({})
+	}
+}
