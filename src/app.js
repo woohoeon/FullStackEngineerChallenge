@@ -18,7 +18,7 @@ app.use(morgan('dev'))
 app.use((req, res, next) => {
 	// Enable CORS
 	// https://create-react-app.dev/docs/proxying-api-requests-in-development
-	const ACCESS_CONTROL_ALLOW_ORIGIN = process.env.ACCESS_CONTROL_ALLOW_ORIGIN || 'http://localhost:3000'
+	const ACCESS_CONTROL_ALLOW_ORIGIN = process.env.PRDUCTION ? process.env.ACCESS_CONTROL_ALLOW_ORIGIN_PROD : process.env.ACCESS_CONTROL_ALLOW_ORIGIN
 	res.header('Access-Control-Allow-Origin', ACCESS_CONTROL_ALLOW_ORIGIN)
 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
 	next()
