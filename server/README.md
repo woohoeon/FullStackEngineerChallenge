@@ -30,15 +30,15 @@ Web application that allows employees to submit feedback toward each other's per
 
 In the project directory, you can run:
 
-### `dev:server`
+### `npm run dev:server`
 
 Runs the app in the development mode.<br>
 You need to install MongoDB locally.
 
-### `build`
+### `npm run build`
 
 Runs the build.
 
-### `start`
+### `npm start`
 
 Runs the app in the production mode.
