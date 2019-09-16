@@ -14,47 +14,52 @@ const PerformanceReviewSchema = new mongoose.Schema({
 		required: 'Reviewer id is required'
 	},
 	reviewStatus: {
-		type: Number,
+		type: Number, // Unwritten: 0, Wrote: 1
 		default: 0
 	},
 	reviewOpen: {
-		type: Number,
+		type: Number, // Close: 0, Open: 1
 		required: 'Review open is required'
 	},
 	quality: {
-		type: Number,
+		type: Number, // Outstanding: 0, Exceeds Expecations: 1, Meets Expecations: 2, Improvement Needed: 3
 		default: 0
 	},
 	qualityComment: {
-		type: String
+		type: String,
+		default: ''
 	},
 	productivity: {
-		type: Number,
+		type: Number, // Outstanding: 0, Exceeds Expecations: 1, Meets Expecations: 2, Improvement Needed: 3
 		default: 0
 	},
 	productivityComment: {
-		type: String
+		type: String,
+		default: ''
 	},
 	jobKnowledge: {
-		type: Number,
+		type: Number, // Outstanding: 0, Exceeds Expecations: 1, Meets Expecations: 2, Improvement Needed: 3
 		default: 0
 	},
 	jobKnowledgeComment: {
-		type: String
+		type: String,
+		default: ''
 	},
 	cooperation: {
-		type: Number,
+		type: Number, // Outstanding: 0, Exceeds Expecations: 1, Meets Expecations: 2, Improvement Needed: 3
 		default: 0
 	},
 	cooperationComment: {
-		type: String
+		type: String,
+		default: ''
 	},
 	attendance: {
-		type: Number,
+		type: Number, // Outstanding: 0, Exceeds Expecations: 1, Meets Expecations: 2, Improvement Needed: 3
 		default: 0
 	},
 	attendanceComment: {
-		type: String
+		type: String,
+		default: ''
 	},
 	createdAt: {
 		type: Date,

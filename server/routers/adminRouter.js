@@ -2,7 +2,6 @@ import express from 'express'
 import routes from '../routes'
 import {
 	adminLogin,
-	adminLogout,
 	admins,
 	addAdmin,
 	editAdmin,
@@ -19,7 +18,6 @@ import {
 const adminRouter = express.Router()
 
 adminRouter.post(routes.adminLogin, adminLogin)
-adminRouter.post(routes.adminLogout, adminLogout)
 adminRouter.get(routes.admins, admins)
 adminRouter.post(routes.addAdmin, addAdmin)
 adminRouter.post(routes.editAdmin, editAdmin)

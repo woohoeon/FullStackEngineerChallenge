@@ -1,14 +1,12 @@
 // Employees
 
 const LOGIN = '/login'
-const LOGOUT = '/logout'
 const REQUIRED_PERFORMANCE_REVIEWS = '/required-performance-reviews'
 const SUBMIT_PERFORMANCE_REVIEW = '/submit-performance-review'
 
 // Admins
 
 const ADMIN_LOGIN = '/login'
-const ADMIN_LOGOUT = '/logout'
 const ADMINS = '/admins'
 const ADD_ADMIN = '/admins/add'
 const EDIT_ADMIN = '/admins/edit'
@@ -23,11 +21,9 @@ const EDIT_PERFORMANCE_REVIEW = '/performance-reviews/edit'
 
 const routes = {
 	login: LOGIN,
-	logout: LOGOUT,
 	requiredPerformanceReviews: REQUIRED_PERFORMANCE_REVIEWS,
 	submitPerformanceReview: SUBMIT_PERFORMANCE_REVIEW,
 	adminLogin: ADMIN_LOGIN,
-	adminLogout: ADMIN_LOGOUT,
 	admins: ADMINS,
 	addAdmin: ADD_ADMIN,
 	editAdmin: EDIT_ADMIN,

@@ -190,8 +190,8 @@ const UserPresenter = ({
 			<Dialog open={openEdit} onClose={handleEditClose}>
 				<DialogTitle id="add-user-title">Edit User</DialogTitle>
 				<DialogContent>
-					<TextField autoFocus margin="dense" id="ID" label="Email Adress" type="email" value={id} disabled fullWidth />
-					<TextField margin="dense" id="name" label="Name" type="text" value={name} onChange={updateName} fullWidth required />
+					<TextField margin="dense" id="ID" label="Email Adress" type="email" value={id} disabled fullWidth />
+					<TextField autoFocus margin="dense" id="name" label="Name" type="text" value={name} onChange={updateName} fullWidth required />
 					<TextField margin="dense" id="password" label="Password" type="text" value={password} onChange={updatePassword} fullWidth required />
 					<FormControl className={classes.formControl} required>
 						<InputLabel htmlFor="max-width">Role</InputLabel>

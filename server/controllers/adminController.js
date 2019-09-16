@@ -19,8 +19,6 @@ export const adminLogin = async (req, res) => {
 	}
 }
 
-export const adminLogout = (req, res) => res.send('adminLogout')
-
 export const admins = async (req, res) => {
 	try {
 		const admins = await User.find({ role: ROLE_ADMIN })

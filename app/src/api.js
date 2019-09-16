@@ -10,7 +10,6 @@ const appendEmployeePath = (path) => `api/employee/${path}`
 
 export const adminApi = {
 	login: (id, password) => api.post(appendAdminPath('login'), { params: { id, password } }),
-	logout: () => api.post(appendAdminPath('logout')),
 	admins: () => api.get(appendAdminPath('admins')),
 	addAdmin: (id, name, password, jobTitle) =>
 		api.post(appendAdminPath('admins/add'), {
@@ -76,9 +75,39 @@ export const adminApi = {
 
 export const employeeApi = {
 	login: (id, password) => api.post(appendEmployeePath('login'), { params: { id, password } }),
-	logout: () => api.post(appendEmployeePath('logout')),
-	requiredPerformanceReviews: (id) => api.get(appendEmployeePath('required-performance-reviews'), { params: { id } }),
-	submitPerformanceReview: () => api.post(appendEmployeePath('submit-performance-review'))
+	requiredPerformanceReviews: (reviewerId) => api.post(appendEmployeePath('required-performance-reviews'), { params: { reviewerId } }),
+	submitPerformanceReview: ({
+		title,
+		employeeId,
+		reviewerId,
+		quality,
+		qualityComment,
+		productivity,
+		productivityComment,
+		jobKnowledge,
+		jobKnowledgeComment,
+		cooperation,
+		cooperationComment,
+		attendance,
+		attendanceComment
+	}) =>
+		api.post(appendEmployeePath('submit-performance-review'), {
+			params: {
+				title,
+				employeeId,
+				reviewerId,
+				quality,
+				qualityComment,
+				productivity,
+				productivityComment,
+				jobKnowledge,
+				jobKnowledgeComment,
+				cooperation,
+				cooperationComment,
+				attendance,
+				attendanceComment
+			}
+		})
 }
 
 export default api
