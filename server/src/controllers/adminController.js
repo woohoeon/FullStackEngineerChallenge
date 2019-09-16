@@ -7,6 +7,11 @@ const ROLE_EMPLOYEE = 1
 export const adminLogin = async (req, res) => {
 	try {
 		const { id, password } = req.body.params
+		// FIXME: Default admin user for test
+		if (id === 'administrator@system.com' && password === 'admin') {
+			res.send({ result: true })
+			return
+		}
 		const admin = await User.findOne({ id, role: 0 })
 		if (admin && admin.password === password) {
 			res.send({ result: true })

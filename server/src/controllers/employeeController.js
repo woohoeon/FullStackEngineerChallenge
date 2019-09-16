@@ -8,6 +8,11 @@ const REVIEW_OPEN = 1
 export const login = async (req, res) => {
 	try {
 		const { id, password } = req.body.params
+		// FIXME: Default employee user for test
+		if (id === 'employee@system.com' && password === 'employee') {
+			res.send({ result: true })
+			return
+		}
 		const admin = await User.findOne({ id, role: 1 })
 		if (admin && admin.password === password) {
 			res.send({ result: true })
