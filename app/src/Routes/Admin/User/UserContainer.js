@@ -148,6 +148,8 @@ const UserContainer = ({ history }) => {
 
 	const updateJobTitle = ({ target: { value } }) => setJobTitle(value)
 
+	const isSystemAdmin = (id) => id === 'administrator@system.com'
+
 	useEffect(() => {
 		if (idContext === '' || roleContext !== 'admin') {
 			history.push('/')
@@ -182,6 +184,7 @@ const UserContainer = ({ history }) => {
 			updatePassword={updatePassword}
 			updateRole={updateRole}
 			updateJobTitle={updateJobTitle}
+			isSystemAdmin={isSystemAdmin}
 		/>
 	)
 }

@@ -73,7 +73,8 @@ const UserPresenter = ({
 	updateName,
 	updatePassword,
 	updateRole,
-	updateJobTitle
+	updateJobTitle,
+	isSystemAdmin
 }) => {
 	const classes = useStyles()
 
@@ -114,7 +115,7 @@ const UserPresenter = ({
 											</Button>
 										</TableCell>
 										<TableCell align="center">
-											<Button variant="outlined" color="default" size="small" id={admin.id} onClick={handleDeleteAdmin}>
+											<Button variant="outlined" color="default" size="small" id={admin.id} onClick={handleDeleteAdmin} disabled={isSystemAdmin(admin.id)}>
 												Delete
 											</Button>
 										</TableCell>
@@ -239,7 +240,8 @@ UserPresenter.propTypes = {
 	updateName: PropTypes.func.isRequired,
 	updatePassword: PropTypes.func.isRequired,
 	updateRole: PropTypes.func.isRequired,
-	updateJobTitle: PropTypes.func.isRequired
+	updateJobTitle: PropTypes.func.isRequired,
+	isSystemAdmin: PropTypes.func.isRequired
 }
 
 export default UserPresenter
